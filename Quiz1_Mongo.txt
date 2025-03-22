@@ -1,0 +1,675 @@
+                                                                                       TEST
+
+NAME:RAJAT BANSAL
+REG.NO.:22BSA10276
+
+1. How do you find all documents where the field "item" is "Mochas"?
+
+Query:
+db.sales.find({item:{$eq:"Mochas"}},{})
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+
+
+2. How do you find all items who are less than 15 of price?
+
+Query:
+
+db.sales.find({price:{$lt:15}},{})
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 5,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 12,
+  date: 2022-02-18T21:06:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 8,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 21,
+  date: 2022-02-22T14:09:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+
+
+
+3. How do you find items who are either less than 10 or greater than 20?
+
+Query:
+
+
+db.sales.find({$or: [{ price: { $lt: 10 } },{ price: { $gt: 20 }}]})
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 7,
+  item: 'Lattes',
+  price: 25,
+  size: 'Tall',
+  quantity: 30,
+  date: 2022-02-21T10:08:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+
+
+4. How do you find all documents where the quantity field exists?
+
+Query:
+
+
+db.sales.find({ quantity: { $exists: true } })
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 3,
+  item: 'Lattes',
+  price: 15,
+  size: 'Grande',
+  quantity: 25,
+  date: 2022-01-16T09:05:00.000Z
+}
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+{
+  _id: 5,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 12,
+  date: 2022-02-18T21:06:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 7,
+  item: 'Lattes',
+  price: 25,
+  size: 'Tall',
+  quantity: 30,
+  date: 2022-02-21T10:08:00.000Z
+}
+{
+  _id: 8,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 21,
+  date: 2022-02-22T14:09:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+
+
+5. How do you find all documents where the color array contains the value "white"?
+
+Query:
+
+
+db.products.find({ color: "white" })
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+
+6. How do you update the ram of the user named "xTablet" to 24?
+
+Query:
+
+
+db.products.updateOne({ name: "xTablet" },{ $set: { "spec.ram": 24 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+7. How do you find all products and only return their 'spec' field?
+
+Query:
+
+
+db.products.find({}, { spec: 1, _id: 0 })
+{
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  }
+}
+{
+  spec: {
+    ram: 24,
+    screen: 9.5,
+    cpu: 3.66
+  }
+}
+{
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  }
+}
+{
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  }
+}
+{
+  spec: {
+    ram: 4,
+    screen: 9.7,
+    cpu: 1.66
+  }
+}
+
+
+8. How do you find all products and sort them by their price in descending order?
+
+Query:
+
+
+db.products.find().sort({price: -1})
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 24,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+
+
+9. How do you find the first 2 products, skipping the first one?
+
+Query:
+
+
+db.products.find().skip(1).limit(2)
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 24,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+
+10. How do you find all users whose name starts with the letter "S" and 
+    price should be greater of 700?
+
+Query:
+
+
+db.products.find({$and: [{ name: /^S/ },{ price: { $gt: 700 } }]})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+
+
+11. How do you calculate the total price of all items?
+
+Query:
+
+
+db.sales.aggregate([{$group: {_id: null,totalPrice: { $sum: { $multiply: ["$price", "$quantity"] } }}}])
+{
+  _id: null,
+  totalPrice: 2342
+}
+
+12.How do you project only the size field for each items?
+
+Query:
+
+
+db.sales.find({}, { size: 1, _id: 0 })
+{
+  size: 'Short'
+}
+{
+  size: 'Short'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Tall'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Tall'
+}
+{
+  size: 'Tall'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Tall'
+}
+
+13. How do you find items who are Tall size &  group them by item wise?
+
+Query:
+
+
+db.sales.aggregate([{ $match: {size:"Tall"}},{$group:{ _id:"$item",count:{$sum:1}}}])
+{
+  _id: 'Mochas',
+  count: 1
+}
+{
+  _id: 'Cappuccino',
+  count: 1
+}
+{
+  _id: 'Lattes',
+  count: 1
+}
+{
+  _id: 'Americanos',
+  count: 1
+}
+
+14. How do you find the second item when sorted by price in ascending order?
+
+Query:
+
+
+db.sales.find().sort({ price: 1 }).skip(1).limit(1)
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+
+15. How do you group by items and calculate the total number of items and average price in a single aggregation?
+
+Query:
+
+
+
+db.sales.aggregate([{$group:{_id:"$item",totalItems:{$sum:1},averagePrice:{$avg:"$price"}}}])
+{
+  _id: 'Americanos',
+  totalItems: 4,
+  averagePrice: 8.25
+}
+{
+  _id: 'Cappuccino',
+  totalItems: 3,
+  averagePrice: 7.666666666666667
+}
+{
+  _id: 'Mochas',
+  totalItems: 1,
+  averagePrice: 25
+}
+{
+  _id: 'Lattes',
+  totalItems: 2,
+  averagePrice: 20
+}
